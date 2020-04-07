@@ -1,0 +1,363 @@
+/* 「inherit」 */
+/* 本来継承されない要素を継承させる */
+/* border:inherit; */
+
+/* 「text-decoration」
+text-decoration:line-through;中線
+text-decoration:underline;下線
+text-decoration:none;線消し */
+
+/* 「font-family」
+  font-family: は、複数選択することによって左から所持しているフォントが適用される
+
+  「line-height」
+  文章を入力したら■の枠の行ボックスが生成される、そのボックスの高さに値する
+  ex)line-height:48px
+     font-size:16px
+     =文字が16px,文字上下の隙間16pxずつの大きさになる
+
+     「vertical-aline」
+     行ボックスの中のどこのラインをベースにするか変更するプロパティ
+
+     「color」について
+     rgba(red,green,blue,alpha)
+     rgb:0-255(数値が高いと濃い)
+     a:0.0-1.0(透明度：数値が高いと濃い)
+     ※16進数
+     rgba:#ff0000ff(ff:濃い)
+     rgba:#f00f(それぞれの値が同じ文字の場合省略可)
+     ※hsla(hue,saturation,lightness,alpha)
+      hue:色相　0-360
+      saturation:彩度　0-100%(くすんだ色-鮮やかな色)
+      lightness:明度　0-100%(暗い色-明るい色)
+      alpha:透明度　0.0-1.0
+
+      「opacity」
+      その要素の透明度を変更させる際に用いる、画像などの透明度も変更できる
+      opacity:0.5;
+
+      「list-style」
+      list-style-type:circle;リスト記号を白丸にできる
+      list-style-position:inside;リストの記号が内側に来る(突出せず合わせる)
+      list-style-image:url();記号の代わりに画像を使う
+      ※list-style:circle inside url();の表記で上記と同じ命令になる(:type position image =ただし略して記述したら、初期値による上書きが発生するので注意)
+
+      「overflow」
+      overflow:hidden;溢れてしまった要素を隠せる
+      overflow:scroll;溢れてしまった分スクロール表示にしてくれる
+
+      「border-style」
+       :dashed;点線の表記になる
+
+       「border-radius」
+       :四角が丸くなる値
+
+       「margin相殺」
+       垂直方向でのmarginは大きい方が適用されて、小さい方は打ち消される
+
+       「block要素(h1,p,div,section...)」
+       上から順に並べられていく
+       width:デフォルトで幅いっぱい指定されている
+            (サイズの変更が有効)
+       height:コンテンツの高さ
+
+       「inline要素(img,span,a,input...)」
+       左から順に並べられていく
+      width:コンテンツの幅
+            (サイズの変更が無効)
+      height:コンテンツの高さ
+
+      「inline-block要素」
+       左から順に並べられていく
+       width:コンテンツの幅
+          (サイズの変更が有効)
+      height:コンテンツの高さ
+
+      「position」
+      static;初期値
+      relative;初期値からの上下左右での指定で配置
+      fixed;windowの左上を起点にして上下左右の位置で固定配置
+      (浮くので他の要素が詰められて入り込む)
+
+      「絶対配置」
+      親要素にposition:relative;
+      子要素にposition:absolute;+上下左右指定
+      することによって親要素の左上を起点に配置される
+      (スクロールしても固定されずそのまま流れていく)
+
+*/
+/* 
+      「z-index」
+      重なり順を調整できるプロパティ
+      数値が大きいほど手前に来る
+      z-index:3;>2>1 
+
+      「box-sizing:border-box」
+      ボーダーを含めたサイズ調整をしてくれる
+      本来ボーダーを追加したら、ボーダー分の大きさも追加されてしまうが、ボーダー分の大きさも加味した上でサイズ調整をしてくれる
+
+      「calc()の使用方法」
+      「calc()」は、プロパティの値を式で表す方法
+      ・四則演算は「+ - * /」
+      ・演算子の前後には必ず半角空白を入れる
+      ex)三つのboxがあり、画面100%で各box間の隙間20pxを維持しながらboxのwidthを調整したい
+      boxのwidthをxとし、画面幅を100%、20pxの隙間二つ
+      3x + 40px =100%
+      3x = 100% - 40px
+      x =(100% - 40px) / 3
+      width:calc((100% - 40px) / 3);
+
+      「box-shadow:x軸 y軸 影のボカシ具合 影全体の拡大 rgba」
+      ・rgbaは最後に持ってくれば指定できる
+      ・数値は全て整数
+      ・text-shadowでテキストに影をつけることも可能
+      ・四番目の影全体の拡大する値はtext-shadowにはつけられない
+
+      「background」
+      ・background-image:url();指定のサイズ内に画像を背景として入れ込む
+      ・background-size:cover;画像の縦横比を保持したまま大きく表示させる
+      ・background-position:center;画像の中心を中心に配置する
+      ※一括指定
+      background: center/cover pink url();
+      ・「position/size」以外は全て半角スペースで区切れば順不同で指定できる
+      (「position/size」は指定の順番で入力しないとエラー表記になる)
+      
+      「float」
+      ・floatされた要素は浮く為その後に続く要素は画像がなかったかのように配置される
+      ・テキストだけは、画像を回り込むように配置される
+      「clear」
+      ・floatされた要素の直下の要素に指定することによりfloatされた要素が直下の要素に食い込むことなくfloatされた要素下に配置される
+      ・displayプロパティがblock要素にしか適用されない
+
+      「属性セレクター」
+      細かいターゲットを指定してスタイリングすることができる
+      [⭐︎]{
+
+      }
+      ex)
+      [target]:target属性がついているプロパティに反映される
+      [href ="#top"]:href属性の#topが付いているプロパティに反映させる（完全一致）
+      [href^="https"]:href属性のhttpsから始まるプロパティに反映させる（前方一致）
+      [href$="dotinstall"]:href属性がdotinstallで終わるプロパティに反映させる（後方一致）
+      [href*="com"]:href属性にcomが含まれるプロパティに反映される（部分一致）
+
+      「セレクターの組み合わせ」
+      「a,b」「aとb」
+      「ab」「bが付与されたa」(両方の要素を同時に満たす要素）
+      「a>b」「aの直下の階層にあるb」
+      「a b」「aの下の階層にあるb」
+      「a+b」「aの直後にあるb」
+
+      ex1)h1.info{
+        color:orange;
+      }
+      <h1 class="info">title</h1>
+      <p>A</p>
+      <h1 class="contents">test</h1>
+      <p>B</p>
+      =h1.infoで適応されるのは、両方を満たしているtitleという文字だけがオレンジ色になる
+
+      ex2)p+p{
+        color:orange;
+      }
+      <p>A</p>
+      <p>B</p>
+      <p>C</p>
+      =p+pはpの直後にあるpにオレンジをなので、B,Cがオレンジ色になる
+
+      「擬似要素::before,::after(要素の前後に挿入する)」
+      h1::before,
+      h2::before{
+      content:'- ';
+      }
+      h1::after,
+      h2::after{
+      content:' -';
+      }
+      ＝- 見出し -となる
+      ※contentプロパティは必須
+
+      「カスタムデータ属性 date-」
+      「date-」で始まっていれば独自の属性をつけて良いとされている
+      ex)
+      h1::before,
+      h2::before{
+      content:'- ';
+      }
+      h1::after,
+      h2::after{
+      content:attr(date-subtitle);
+      }
+      <h1 date-subtitle=" - Main Title">見出し1</h1>
+      <h2 date-subtitle=" - Sub Title">見出し2</h1>
+      =- 見出し1 - Main Title
+       - 見出し2 - Sub Title という表示になる
+
+       「擬似クラス:hover」
+       .btn{
+         width:100px;
+         background:skyblue;
+         text-align:center;
+         padding:4px;
+         color:white;
+         cursor:pointer;※よく使う
+       }
+       .btn:hover{
+         opacity:0.8;※透明度調整
+       }
+       =マウスホバーしている時透明度が薄くなる
+
+       「擬似クラス:nth-child」
+      同じ階層に並んでいる要素のうち順番を指定してスタイルをつけるもの
+      ex)
+      main > :nth-child(3){
+        background: pink;
+      }
+      =main直下の三番目の要素にピンクの背景を着けるよう指示
+
+      main > :nth-child(3n){
+        background: pink;
+      }
+      =main直下の三の倍数番目の要素にピンクの背景を着けるよう指示
+
+      main > :nth-child(odd){
+        background: pink;
+      }
+      =main直下の奇数番目の要素にピンクの背景を着けるよう指示
+      
+      main > :nth-child(even){
+        background: pink;
+      }
+      =main直下の偶数番目の要素にピンクの背景を着けるよう指示
+
+      main > :first-child{
+        background: pink;
+      }
+      =main直下の一番目の要素にピンクの背景を着けるよう指示
+
+      main > :last-child{
+        background: pink;
+      }
+      =main直下の最後の要素にピンクの背景を着けるよう指示
+
+      「擬似クラス:nth-of-type()」
+      同じ階層に並んでいる要素の種類も考慮した上で順番を指定してスタイルをつけるもの
+      ※種類も指定する必要あり下記ではh2としている
+      ※nth-clildでの使い方とほぼ同じ使い方ができる(n,odd,even...)
+      ex)
+      main > h2:nth-of-type(3){
+        background:pink;
+      }
+      =main直下の三番目のh2にピンクの背景をつけるよう指示
+
+      main > h2:nth-of-type(odd){
+        background:pink;
+      }
+      =main直下の奇数番目のh2にピンクの背景をつけるよう指示
+
+      main > h2:first-of-type{
+        background:pink;
+      }
+      =main直下の最初のh2にピンクの背景をつけるよう指示
+
+      main > h2:last-of-type{
+        background:pink;
+      }
+      =main直下の最後のh2にピンクの背景をつけるよう指示
+
+      「擬似クラス:empty」
+      空の要素を選択できる擬似クラス
+      ※半角空白や改行があると空とはみなされない
+      ※コメントのみだったら空と扱われる
+      ex)
+      li:empty{
+        background: pink;
+      }
+      <li>A</li>
+      <li>B</li>
+      <li></li>
+      <li>D</li>
+      <li>E</li>
+      =空である三番目の項目にピンクの背景がつく
+
+      「否定を意味する擬似クラス:not()」
+      与えたセレクターの否定を指す擬似クラスとなっている
+      ex)
+      li:not(:empty){
+        background: pink;
+      }
+      <li>A</li>
+      <li>B</li>
+      <li></li>
+      <li>D</li>
+      <li>E</li>
+      =空である三番目の項目にピンクの背景がつく→反転するのでABDEの項目にピンクの背景がつく
+
+      「セレクター詳細度」
+      どのスタイルが優先されるかの指標
+      id=百の位
+      class,属性,擬似クラス＝十の位
+      要素,擬似要素＝一の位
+      その数を当てはめてその合計が一番大きいセレクターが優先される
+      ※下記の順で優先度を調節できる
+      セレクター詳細度<直接style属性記述<!important
+
+      「!importantの記述」
+      何よりも優先度の高い!importantの記述は、プロパティに記載
+      ex)
+      h1{
+        color:red !important;
+      }
+
+      「flexbox」
+      ※marginの相殺が起きない
+      ※一括指定ができる
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      .box1{
+        background-color: aqua;
+        width: 50px;
+        height: 50px;
+      }
+      .box2{
+        background-color: tomato;
+        width: 50px;
+        height: 50px;
+      }    
+      .box3{
+        background-color:lime;
+        width: 50px;
+        height: 50px;
+      }
+
+

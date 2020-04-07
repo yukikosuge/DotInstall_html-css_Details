@@ -1,0 +1,145 @@
+<!-- 記述そのまま反映 -->
+<!-- <pre></pre> -->
+
+<!-- コード記述そのまま反映 -->
+<!-- <pre><code></code></pre> -->
+
+説明リスト 
+<dl><dt>項目A</dt><dd>項目Aの説明</dd></dl>
+
+<!-- ファビコン設定 -->
+<!-- <link rel="icon" href="favicon.ico"> -->
+
+<!-- ブラウザ記載 -->
+<!-- <meta name="description" content="プログラミング学習サービスのインストールです"> -->
+
+<!-- 引用サイトの表記 -->
+<!-- <blockquote site="---.com"></blockquote> -->
+
+<!-- 話題が変わるという意味があるタグ 線が引かれる-->
+<!-- <hr> -->
+
+<!-- テーブル構成 -->
+<!-- 
+  <table>
+  <thead><tr><th></th></tr></thead>
+  <tbody><tr><td></td></tr></tbody>
+  </table> 
+-->
+
+<!-- リンクの貼り方 -->
+<!-- <a href="http://" target="_blank" >◉</a> -->
+
+<!-- パス -->
+<!-- ../:前の階層へ -->
+
+<!-- 
+ページ内リンク
+<a href="#A"></a>
+id="A" 
+-->
+
+<!-- ページトップへ
+<a href="#">topへ</a> -->
+
+<!-- 各種タグの意味 -->
+<!-- 
+<header></header>:導入的なコンテンツ
+<footer></footer>:締め括りコンテンツ
+<nav></nav>:ナビゲーション
+<aside></aside>:関連性の薄いコンテンツ
+<article></article>:記事/独立したコンテンツ毎に配置
+<main></main>:主要なコンテンツ
+<section></section>:汎用的に使えるコンテンツ
+ -->
+
+<!-- Htmlについての詳細サイト -->
+<!-- https://developer.mozilla.org/ja/ -->
+
+<!-- 入力フォームの作成 (推奨：<rabel>で括る)-->
+<!-- <input type="text" > フォーム作成-->
+<!-- <input type="text" value="hello">フォーム初期値設定(初めから文字が記入されている状態) -->
+<!-- <input type="password"> フォーム伏字設定-->
+<!-- <textarea name="" id="" cols="30" rows="10">A</textarea>大きめのテキスト欄設定 -->
+<!-- <input type="text" placeholder="hello">フォーム記入例(推奨はされておらず、labelが推奨されている) -->
+
+<!-- 推奨されるフォーム作成例 -->
+<label>名前<input type="text" > </label>
+
+<!-- ドロップダウンリストの作成 -->
+
+<label for="color">好きな色</label>
+<select name="" id="color" >select属性にsize="数字"：一度に表示される数の指定、maltiple:複数選択する事ができるようになる
+<option value="">色1</option>option属性にselectedを追加すると初めからその項目が選択されている表記になる
+<option value="">色2</option>
+<option value="">色3</option>
+</select> 
+
+
+<!-- チェックボックスの作成(複数選択可) -->
+<!-- <label><input type="checkbox" name="" id=""></label>input属性にcheckedを入れると予めチェックがされた状態になっている -->
+
+<!-- 入力部品をグループ化する -->
+
+<!-- <fieldset>
+  <legend>項目</legend>
+  <label><input type="checkbox">A</label>
+  <label><input type="checkbox">B</label>
+  <label><input type="checkbox">C</label>
+</fieldset> -->
+
+
+<!-- ラジオボックスの作成(いずれか一つ) -->
+ 
+ <!-- <fieldset>
+  <legend>一番好きなスマホ</legend>
+  <label><input type="radio" name="phone" id="">iphone</label>input属性にtype="radio" name="選択肢の中の共通項"
+  <label><input type="radio" name="phone" id="">android</label>
+  <label><input type="radio" name="phone" id="">その他</label>
+</fieldset> -->
+
+
+<!-- 様々な入力部品 (ブラウザによっては反映しない場合もあるのであまり実用的ではない)-->
+ 
+ <!-- <p><input type="color"></p>
+<p><input type="date"></p>
+<p><input type="number"></p>
+<p><input type="range"></p>  -->
+
+
+<!-- ボタンの作成 -->
+<!-- どちらも属性でdisabledをつけてあげればボタンの無効化ができる
+<input type="button" value="OK">
+or
+<button>OK</button>  -->
+
+
+<!-- フォーム送信の記述 -->
+<!-- 追加ボタンで送られた情報を"process.php"に"POST"形式で送られる
+<form action="process.php" method="POST">
+  <label>担当者名<input type="text" name="username" id=""></label>
+  <label>タスク<input type="text" name="task" id=""></label>
+  <button>追加</button>
+-->
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="プログラミング学習サービスのインストールです">
+  <title>ドットインストール</title>
+  <link rel="icon" href="favicon.ico">
+</head>
+
+<body>
+  <form action="process.php" method="POST">
+    <label>担当者名<input type="text" name="username" id=""></label>
+    <label>タスク<input type="text" name="task" id=""></label>
+    <button>追加</button>
+  </form>
+
+</body>
+
+
+</html>

@@ -1,0 +1,88 @@
+/* アニメーションプロパティ */
+
+  /* アニメーションにするプロパティ指定&時間の指定 */
+  /*「all」でも省略可*/
+  /* transition-property: transform, opasity; */
+  /* transition-duration: .4s; */
+
+  /* x,y方向の移動量の指定 */
+  /* transform: translate(20px, 10px); */
+
+  /* 時計回り角度指定 */
+  /* transform: rotate(45deg); */
+
+  /* 中心を起点にし大きさ変更「1.0」が基準となる */
+  /* transform: scale(1.5); */
+
+  /* 起点の変更 */
+  /* transform-origin: left top; */
+
+  /* 透明度設定0-1 */
+  /* opacity: 1; */
+
+/* 「.box.moved」
+動くようになる
+ex)
+.box.moved {
+  transform: translate(400px, 0);
+} */
+
+
+
+  /* 最初ゆっくり途中早く最後ふわっと止まる動作 */
+  /* transition-timing-function: ease; */
+
+  /* クリックしたら早い段階で動き出す、比較的小さな部品に使われることが多い */
+  /* transition-timing-function: ease-out; */
+
+  /* 最初はゆっくり動き出す、大きな部品に使われることが多い */
+  /* transition-timing-function: ease-in-out; */
+
+  /* 「cubic-bezier()」デベロッパーツールからのアニメーション指定 */
+  /* 横軸が時間縦軸が変化量を表す表となっており好きに調整できる */
+  /* transition-timing-function:cubic-bezier(); */
+
+  /* 「@keyframes」
+  ネームを指定してあげて、%時の動きを指定してあげる
+  ex)
+  .box.moved {
+    animation-name: spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;/*永久に動き続ける
+  }
+  
+  @keyframes spin {
+    0%{transform: none;}
+    100%{transform: rotate(360deg);}
+  } */
+  
+
+
+    
+.box {
+  width: 40px;
+  height: 40px;
+  background: skyblue;
+  cursor: pointer;
+
+
+}
+.box.moved {
+  animation-name: spin;
+  animation-duration: 2s;
+  /* animation-iteration-count: infinite; */
+  animation-timing-function: ease-in-out;
+
+  /* 100%まで行ったら逆再生する */
+  /* animation-direction: alternate; */
+
+  /* あのメーション終了時の形で止まる */
+  animation-fill-mode: forwards;
+}
+
+@keyframes spin {
+  0%{transform: none;}
+  50%{ transform: rotate(270deg) scale(0.8); border-radius: 50%;}
+  80%{ transform: rotate(320deg) scale(1.8); }
+  100%{transform: rotate(360deg) scale(0.2) translateY(200px);}
+}
